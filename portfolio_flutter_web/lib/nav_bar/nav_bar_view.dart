@@ -6,6 +6,22 @@ class NavBarView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, size) {
+        if (size.isMobile) {
+          return Container(
+              height: 60,
+              width: double.infinity,
+              child: Row(
+                children: [
+                  SizedBox(width: 20),
+                  FlutterLogo(),
+                  Spacer(),
+                  IconButton(
+                    icon: Icon(Icons.menu),
+                    onPressed: () => Scaffold.of(context).openEndDrawer(),
+                  )
+                ],
+              ));
+        }
         final onPressed = () => print('click');
         return Container(
           height: 100,
@@ -50,6 +66,7 @@ class NavBarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSmall = MediaQuery.of(context).size.width < 650;
     return Container(
       padding: EdgeInsets.only(left: 64),
       child: InkWell(
@@ -60,7 +77,7 @@ class NavBarItem extends StatelessWidget {
         highlightColor: Colors.transparent,
         child: Text(
           text,
-          style: TextStyle(fontSize: 24),
+          style: TextStyle(fontSize: isSmall ? 17 : 24),
         ),
       ),
     );

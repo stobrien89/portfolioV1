@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Sean O'Brien",
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -27,7 +28,7 @@ class PortfolioView extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      drawer: DrawerView(),
+      endDrawer: DrawerView(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -53,29 +54,24 @@ class DrawerView extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: <Widget>[
               DrawerHeader(
-                child: Text('Drawer Header'),
+                child: Text("Sean O'Brien"),
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  gradient: LinearGradient(
+                    colors: [Colors.red, Colors.black],
+                    tileMode: TileMode.repeated,
+                  ),
                 ),
               ),
-              ListTile(
-                title: Text('Item 1'),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: Text('Item 2'),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ),
+              for (var item in kNavItemsList)
+                ListTile(
+                  title: Text(item.text),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                    // Then close the drawer
+                    Navigator.pop(context);
+                  },
+                ),
             ],
           ),
         );

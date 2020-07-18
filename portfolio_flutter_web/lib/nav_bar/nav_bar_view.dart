@@ -68,7 +68,7 @@ class NavBarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final isSmall = MediaQuery.of(context).size.width < 650;
     return Container(
-      padding: EdgeInsets.only(left: 64),
+      padding: const EdgeInsets.only(left: 64),
       child: InkWell(
         onTap: onPressed,
         mouseCursor: MaterialStateMouseCursor.clickable,

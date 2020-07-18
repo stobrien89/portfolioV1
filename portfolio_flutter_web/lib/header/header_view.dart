@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_flutter_web/constants.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class HeaderView extends StatelessWidget {
@@ -15,7 +16,7 @@ class HeaderView extends StatelessWidget {
         if (size.isMobile) return HeaderMobileView();
         return Container(
             height: 864,
-            width: 1507,
+            width: kInitWidth,
             color: Colors.red,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50.0),
@@ -48,12 +49,12 @@ class HeaderBody extends StatelessWidget {
       children: [
         AutoSizeText(
           "I'm a Software",
-          style: GoogleFonts.montserrat(fontSize: 60),
+          style: Theme.of(context).textTheme.headline2,
           maxLines: 1,
         ),
         AutoSizeText(
           "Engineer </>",
-          style: GoogleFonts.montserrat(fontSize: 60),
+          style: Theme.of(context).textTheme.headline2,
           maxLines: 1,
         ),
         SizedBox(height: isMobile ?? false ? 18 : 37),

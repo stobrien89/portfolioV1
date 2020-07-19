@@ -52,7 +52,6 @@ class ProjectsDesktopView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         padding: const EdgeInsets.symmetric(horizontal: 50),
-        height: 864,
         width: kInitWidth,
         color: Colors.yellow,
         child: Column(
@@ -74,7 +73,8 @@ class ProjectsDesktopView extends StatelessWidget {
                     ),
                   )
               ],
-            )
+            ),
+            SizedBox(height: 70)
           ],
         ));
   }

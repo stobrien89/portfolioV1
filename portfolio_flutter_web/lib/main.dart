@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter_web/header/header_view.dart';
 import 'package:portfolio_flutter_web/nav_bar/nav_bar_view.dart';
 import 'package:portfolio_flutter_web/projects/projects_view.dart';
+import 'package:portfolio_flutter_web/skills/skills_view.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 void main() {
@@ -46,6 +47,7 @@ class PortfolioView extends StatelessWidget {
             NavBarView(),
             HeaderView(),
             ProjectsView(),
+            SkillsView(),
             Container(height: height, width: width, color: Colors.black),
           ],
         ),

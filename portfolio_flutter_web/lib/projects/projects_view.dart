@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_flutter_web/projects/project_item_body.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import 'package:portfolio_flutter_web/constants.dart';
@@ -21,7 +22,7 @@ final kProjectItems = [
       image: 'images/placeholder.jpg',
       title: 'Dig Those Diglett',
       description: 'A simple pokemon based game',
-      technologies: ['HTML5, jQuery, CSS']),
+      technologies: ['HTML5', 'jQuery', 'CSS']),
   ProjectItem(
       image: 'images/placeholder.jpg',
       title: 'LostOnes',
@@ -61,29 +62,15 @@ class ProjectsDesktopView extends StatelessWidget {
               'Projects',
               style: Theme.of(context).textTheme.headline2,
             ),
+            SizedBox(height: 20),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 for (final item in kProjectItems)
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(item.image),
-                        Text(
-                          item.title,
-                          style: Theme.of(context).textTheme.headline4,
-                        ),
-                        Text(
-                          item.description,
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        Row(
-                          children: [
-                            for (final tech in item.technologies)
-                              Chip(label: Text(tech))
-                          ],
-                        )
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ProjectItemBody(item: item),
                     ),
                   )
               ],
@@ -96,6 +83,22 @@ class ProjectsDesktopView extends StatelessWidget {
 class ProjectsMobileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 50),
+        width: kInitWidth,
+        color: Colors.yellow,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Divider(thickness: 3),
+            SizedBox(height: 40),
+            Text(
+              'Projects',
+              style: Theme.of(context).textTheme.headline2,
+            ),
+            SizedBox(height: 40),
+            for (final item in kProjectItems) ProjectItemBody(item: item)
+          ],
+        ));
   }
 }
